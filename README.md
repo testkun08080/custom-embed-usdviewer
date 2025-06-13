@@ -52,3 +52,6 @@ uv run OpenUSD/build_scripts/build_usd.py BuildUSD
 ```zsh
 uv run --env-file=.env usdview OpenUSD/extras/usd/tutorials/convertingLayerFormats/Sphere.usda
 ```
+
+### 注釈
+https://gist.github.com/BigRoy/5ac50208969fdc69a722d66874faf8a2#file-usdviewport_qt-py
