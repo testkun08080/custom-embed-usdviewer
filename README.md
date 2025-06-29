@@ -1,5 +1,7 @@
 # はじめに
-USDのビルドからusdviewerのローカル起動までを行います
+USDのビルドからusdviewerのローカル起動までを行います。
+詳しいドキュメントは以下公式のgithub ページをご覧ください
+[USD-github]https://github.com/PixarAnimationStudios/OpenUSD
 
 ## 開発環境
 - macOS Sequoia 15.5
@@ -51,6 +53,11 @@ uv run OpenUSD/build_scripts/build_usd.py BuildUSD
 ## usdviewerの起動
 ```zsh
 uv run --env-file=.env usdview OpenUSD/extras/usd/tutorials/convertingLayerFormats/Sphere.usda
+```
+
+## シェルスクリプトを使用して起動する場合
+```zsh
+source ./runUSDViewr.sh 
 ```
 
 ### 注釈
