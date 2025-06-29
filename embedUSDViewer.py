@@ -5,9 +5,12 @@ from pxr.Usdviewq.stageView import StageView
 from pxr.Usdviewq.appController import AppController
 from pxr.Usdviewq.usdviewApi import UsdviewApi
 
-class Widget(QtWidgets.QWidget):
+import sys
+
+
+class EmmbedUSDWidget(QtWidgets.QWidget):
     def __init__(self, stage=None):
-        super(Widget, self).__init__()
+        super(EmmbedUSDWidget, self).__init__()
         self.model = StageView.DefaultDataModel()
         self.stage = stage
         self.view = StageView(dataModel=self.model)
@@ -19,21 +22,8 @@ class Widget(QtWidgets.QWidget):
         if self.stage:
             self.setStage(self.stage)
 
-        self.viewerCamera = self.stage.DefinePrim("/viewer/camera", "Camera")
-
-        self.bt = QtWidgets.QPushButton('Save picture')
-        self.bt.clicked.connect(self.imageSave)
-
-        layout.addWidget(self.bt)
-        
-
     def imageSave(self):
-
-        # print(dir(self.viewAPI))
-        # hey = self.viewAPI.GrabViewportShot()
-        # print("hey", hey)
         print("GetRendererAovs", self.view.GetRendererAovs())
-
         image = self.view.grabFramebuffer()
         image.save('save.png')
 
@@ -41,7 +31,6 @@ class Widget(QtWidgets.QWidget):
         self.model.stage = stage
 
     def closeEvent(self, event):
-
         # Ensure to close the renderer to avoid GlfPostPendingGLErrors
         self.view.closeRenderer()
 
@@ -59,7 +48,7 @@ if __name__ == '__main__':
     with Usd.StageCacheContext(UsdUtils.StageCache.Get()):
         stage = Usd.Stage.Open(path)
 
-    window = Widget(stage)
+    window = EmmbedUSDWidget(stage)
     window.setWindowTitle("USD Viewer")
     window.resize(QtCore.QSize(750, 750))
     window.show()
