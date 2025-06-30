@@ -1,14 +1,38 @@
 import sys
-from PySide6 import QtGui, QtCore, QtWidgets
-from pxr import Usd, UsdUtils, Sdf
+from PySide6 import QtCore, QtWidgets
+from pxr import Usd, UsdUtils
 from pxr.Usdviewq.stageView import StageView
-from pxr.Usdviewq.appController import AppController
-from pxr.Usdviewq.usdviewApi import UsdviewApi
 
-import sys
+# class EmmbedUSDOpenGLWidget(QtOpenGLWidgets.QOpenGLWidget):
+#     def __init__(self, stage=None):
+#         super(EmmbedUSDWidget, self).__init__()
+#         self.model = StageView.DefaultDataModel()
+#         self.stage = stage
+#         self.view = StageView(dataModel=self.model)
+
+#         layout = QtWidgets.QVBoxLayout(self)
+#         layout.addWidget(self.view)
+#         layout.setContentsMargins(0, 0, 0, 0)
+
+#         if self.stage:
+#             self.setStage(self.stage)
+
+#     def imageSave(self):
+#         print("GetRendererAovs", self.view.GetRendererAovs())
+#         image = self.view.grabFramebuffer()
+#         image.save("save.png")
+
+#     def setStage(self, stage):
+#         self.model.stage = stage
+
+#     def closeEvent(self, event):
+#         # Ensure to close the renderer to avoid GlfPostPendingGLErrors
+#         self.view.closeRenderer()
 
 
 class EmmbedUSDWidget(QtWidgets.QWidget):
+    """A widget to embed USD stage viewer."""
+
     def __init__(self, stage=None):
         super(EmmbedUSDWidget, self).__init__()
         self.model = StageView.DefaultDataModel()
@@ -20,26 +44,36 @@ class EmmbedUSDWidget(QtWidgets.QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
 
         if self.stage:
-            self.setStage(self.stage)
+            self.set_stage(self.stage)
 
-    def imageSave(self):
+        # Reset View
+        self.view.updateView(resetCam=True, forceComputeBBox=True)
+
+    def image_save(self):
+        """Save the current view as an image file."""
         print("GetRendererAovs", self.view.GetRendererAovs())
         image = self.view.grabFramebuffer()
-        image.save('save.png')
+        image.save("save.png")
 
-    def setStage(self, stage):
+    def set_stage(self, stage):
+        """Set the USD stage for the viewer."""
         self.model.stage = stage
 
-    def closeEvent(self, event):
+    def close_event(self, event):
+        """Handle the close event to ensure renderer is closed."""
         # Ensure to close the renderer to avoid GlfPostPendingGLErrors
         self.view.closeRenderer()
 
+    def reset_camera(self):
+        """Resets the camera to fit the geometry in the view."""
+        self.view.updateView(resetCam=True, forceComputeBBox=True)
 
-if __name__ == '__main__':
 
+if __name__ == "__main__":
     app = QtWidgets.QApplication([])
 
     import signal
+
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     # path = r"Sphere.usda"
@@ -52,8 +86,5 @@ if __name__ == '__main__':
     window.setWindowTitle("USD Viewer")
     window.resize(QtCore.QSize(750, 750))
     window.show()
-
-    # カメラをジオメトリにフィット
-    window.view.updateView(resetCam=True, forceComputeBBox=True)
 
     sys.exit(app.exec_())

@@ -28,7 +28,7 @@
      <number>0</number>
     </property>
     <item row="0" column="1">
-     <layout class="QHBoxLayout" name="mainLayout"/>
+     <layout class="QHBoxLayout" name="main_layout"/>
     </item>
    </layout>
   </widget>
@@ -55,16 +55,23 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="contorol_vertical_layout">
        <item>
-        <widget class="QComboBox" name="aovs_comboBox">
+        <widget class="QComboBox" name="aovs_combobox">
          <property name="editable">
           <bool>false</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="saveImage_Button">
+        <widget class="QPushButton" name="reset_camera_button">
+         <property name="text">
+          <string>Reset Camera</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="save_image_button">
          <property name="text">
           <string>Save Image</string>
          </property>
