@@ -1,2 +1,4 @@
 .venv
 BuildUSD
+__pycache__
+*.pyc
