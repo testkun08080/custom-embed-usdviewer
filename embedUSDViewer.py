@@ -3,32 +3,6 @@ from PySide6 import QtCore, QtWidgets
 from pxr import Usd, UsdUtils
 from pxr.Usdviewq.stageView import StageView
 
-# class EmmbedUSDOpenGLWidget(QtOpenGLWidgets.QOpenGLWidget):
-#     def __init__(self, stage=None):
-#         super(EmmbedUSDWidget, self).__init__()
-#         self.model = StageView.DefaultDataModel()
-#         self.stage = stage
-#         self.view = StageView(dataModel=self.model)
-
-#         layout = QtWidgets.QVBoxLayout(self)
-#         layout.addWidget(self.view)
-#         layout.setContentsMargins(0, 0, 0, 0)
-
-#         if self.stage:
-#             self.setStage(self.stage)
-
-#     def imageSave(self):
-#         print("GetRendererAovs", self.view.GetRendererAovs())
-#         image = self.view.grabFramebuffer()
-#         image.save("save.png")
-
-#     def setStage(self, stage):
-#         self.model.stage = stage
-
-#     def closeEvent(self, event):
-#         # Ensure to close the renderer to avoid GlfPostPendingGLErrors
-#         self.view.closeRenderer()
-
 
 class EmmbedUSDWidget(QtWidgets.QWidget):
     """A widget to embed USD stage viewer."""
@@ -76,8 +50,7 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    # path = r"Sphere.usda"
-    path = "OpenUSD/extras/usd/tutorials/convertingLayerFormats/Sphere.usda"
+    path = r"Sphere.usda"
 
     with Usd.StageCacheContext(UsdUtils.StageCache.Get()):
         stage = Usd.Stage.Open(path)

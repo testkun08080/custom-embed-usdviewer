@@ -29,19 +29,24 @@ def get_ui_widget(ui_file_name):
     return ui_widget
 
 
-class UsdViewerContoler:
-    """Controller class for the USD viewer.
+class EmbedUsdViewerController:
+    """Controller class for the Embed USD viewer.
 
     Manages the loading of USD stages and the viewer widget.
     """
 
-    def __init__(self):
-        self.ui = get_ui_widget("form.ui")
+    def __init__(self, usd_file=None):
+        """Initializes the USD viewer controller.
+
+        Args:
+            usd_file (str): USD file
+        """
+
+        self.ui = get_ui_widget("usdViewerController.ui")
 
         # Load USD Stage
-        path = "Sphere.usda"
         with Usd.StageCacheContext(UsdUtils.StageCache.Get()):
-            self.stage = Usd.Stage.Open(path)
+            self.stage = Usd.Stage.Open(usd_file)
 
         # Embed USD Viewer widget
         self.usd_widget = EmmbedUSDWidget(self.stage)
@@ -78,7 +83,7 @@ class UsdViewerContoler:
         Args:
             aov_name (str): The name of the selected AOV.
         """
-        print(aov_name)
+
         # Update view to the selected AOV
         if aov_name:
             self.usd_widget.view.SetRendererAov(aov_name)
@@ -88,9 +93,9 @@ class UsdViewerContoler:
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
 
-    window = UsdViewerContoler()
-    window.ui.show()
+    viewer_controller = EmbedUsdViewerController("Sphere.usda")
+    viewer_controller.ui.show()
 
     # You might need to call this after shop up the window
-    window.setup_aov_ui()
+    viewer_controller.setup_aov_ui()
     sys.exit(app.exec_())
