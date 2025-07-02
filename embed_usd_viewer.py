@@ -1,4 +1,8 @@
+"""A simple application to embed a USD viewer using PySide6."""
+
+import os
 import sys
+from datetime import datetime
 from PySide6 import QtCore, QtWidgets
 from pxr import Usd, UsdUtils
 from pxr.Usdviewq.stageView import StageView
@@ -27,7 +31,10 @@ class EmmbedUSDWidget(QtWidgets.QWidget):
         """Save the current view as an image file."""
         print("GetRendererAovs", self.view.GetRendererAovs())
         image = self.view.grabFramebuffer()
-        image.save("save.png")
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+        os.makedirs("screenshots", exist_ok=True)
+        filename = f"screenshots/screenshot_{timestamp}.png"
+        image.save(filename)
 
     def set_stage(self, stage):
         """Set the USD stage for the viewer."""
@@ -50,7 +57,7 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    path = r"Sphere.usda"
+    path = "assets/Sphere.usda"
 
     with Usd.StageCacheContext(UsdUtils.StageCache.Get()):
         stage = Usd.Stage.Open(path)

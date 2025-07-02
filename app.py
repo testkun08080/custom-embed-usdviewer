@@ -6,7 +6,7 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
 from pxr import Usd, UsdUtils
 
-from embedUSDViewer import EmmbedUSDWidget
+from embed_usd_viewer import EmmbedUSDWidget
 
 
 def get_ui_widget(ui_file_name):
@@ -93,7 +93,7 @@ class EmbedUsdViewerController:
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
 
-    viewer_controller = EmbedUsdViewerController("Sphere.usda")
+    viewer_controller = EmbedUsdViewerController("assets/Sphere.usda")
     viewer_controller.ui.show()
 
     # You might need to call this after shop up the window
