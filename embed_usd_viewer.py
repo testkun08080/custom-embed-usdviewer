@@ -78,6 +78,16 @@ class EmmbedUSDWidget(QtWidgets.QWidget):
 
         self.model.viewSettings.showBBoxes = enable
 
+    def closeEvent(self, event):
+        """Close envet handler to ensure proper cleanup.
+
+        Args:
+            event (QtGui.QCloseEvent): The close event triggered by the widget.
+        """
+
+        # Ensure to close the renderer to avoid GlfPostPendingGLErrors
+        self.view.closeRenderer()
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
