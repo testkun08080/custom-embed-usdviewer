@@ -42,7 +42,7 @@ class EmbedUsdViewerController:
             usd_file (str): USD file
         """
 
-        self.ui = get_ui_widget("usdViewerController.ui")
+        self.ui = get_ui_widget("UI/usdViewerController.ui")
 
         # Load USD Stage
         with Usd.StageCacheContext(UsdUtils.StageCache.Get()):
