@@ -64,12 +64,12 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="shading_comboBox"/>
+        <widget class="QComboBox" name="shading_mode_combobox"/>
        </item>
        <item>
-        <widget class="QCheckBox" name="show_bbx_checkBox">
+        <widget class="QCheckBox" name="show_bbxs_checkbox">
          <property name="text">
-          <string>Show BBX</string>
+          <string>Show BBoxes</string>
          </property>
         </widget>
        </item>

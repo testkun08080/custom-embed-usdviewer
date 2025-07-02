@@ -5,6 +5,7 @@ from PySide6 import QtWidgets
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
 from pxr import Usd, UsdUtils
+from pxr.Usdviewq.stageView import RenderModes
 
 from embed_usd_viewer import EmmbedUSDWidget
 
@@ -58,11 +59,25 @@ class EmbedUsdViewerController:
         # Connect Reset Camera button event
         self.ui.reset_camera_button.clicked.connect(self.usd_widget.reset_camera)
 
+        # Connect Render Mode comboBox event
+        self.ui.shading_mode_combobox.addItems([mode for mode in RenderModes])
+        self.ui.shading_mode_combobox.setCurrentText(self.usd_widget.model.viewSettings.renderMode)
+        self.ui.shading_mode_combobox.currentTextChanged.connect(self.usd_widget.set_render_mode)
+
+        # Connect HUB checkBox event
+        self.ui.show_hud_checkbox.setChecked(self.usd_widget.model.viewSettings.showHUD)
+        self.ui.show_hud_checkbox.clicked.connect(self.usd_widget.show_hud)
+
+        # Connect BBoxes checkBox event
+        self.ui.show_bbxs_checkbox.setChecked(self.usd_widget.model.viewSettings.showBBoxes)
+        self.ui.show_bbxs_checkbox.clicked.connect(self.usd_widget.show_bboxes)
+
     def setup_aov_ui(self):
         """Sets up the UI for AOVs selection.
 
         Retrieves the AOVs list and adds them to a combo box.
         """
+
         # Retrieve and add AOVs list to combo box
         aovs = self.usd_widget.view.GetRendererAovs()
         if not aovs:
