@@ -57,7 +57,7 @@ uv run --env-file=.env usdview OpenUSD/extras/usd/tutorials/convertingLayerForma
 
 ## シェルスクリプトを使用して起動する場合
 ```zsh
-source ./runUSDViewr.sh 
+source ./run_usd_viewer.sh 
 ```
 
 ### 注釈

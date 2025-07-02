@@ -64,9 +64,33 @@
         </widget>
        </item>
        <item>
+        <widget class="QComboBox" name="shading_comboBox"/>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="show_bbx_checkBox">
+         <property name="text">
+          <string>Show BBX</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="show_hud_checkbox">
+         <property name="text">
+          <string>Show HUD</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="reset_camera_button">
          <property name="text">
           <string>Reset Camera</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="copy_image_button">
+         <property name="text">
+          <string>Copy Image</string>
          </property>
         </widget>
        </item>

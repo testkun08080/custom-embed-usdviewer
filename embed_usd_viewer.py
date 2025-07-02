@@ -49,6 +49,14 @@ class EmmbedUSDWidget(QtWidgets.QWidget):
         """Resets the camera to fit the geometry in the view."""
         self.view.updateView(resetCam=True, forceComputeBBox=True)
 
+    def show_hud(self):
+        """Show the HUD (Heads-Up Display) in the viewer."""
+        # self.view.updateView(resetCam=True, forceComputeBBox=True)
+
+    def show_bbx(self):
+        """Show the BBX (Bounding Box) in the viewer."""
+        # self.view.updateView(resetCam=True, forceComputeBBox=True)
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
