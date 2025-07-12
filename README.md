@@ -8,6 +8,7 @@ USDのビルドからusdviewerのローカル起動までを行います。
 詳しいドキュメントは以下公式のgithub ページをご覧ください
 [USD-github]https://github.com/PixarAnimationStudios/OpenUSD
 
+![サンプルGIF](/docs/sample.gif)
 
 ## 開発環境
 - macOS Sequoia 15.5
@@ -63,7 +64,7 @@ uv run OpenUSD/build_scripts/build_usd.py BuildUSD
   ```
 - pythonファイル経由で起動
   ```zsh
-  uv run open_usd_viewer.py
+  uv run --env-file=.env open_usd_viewer.py
   ```
 - Shell scriptでの起動
   ```zsh
@@ -75,8 +76,22 @@ uv run OpenUSD/build_scripts/build_usd.py BuildUSD
 
 - uvでapp.pyの起動
   ```zsh
-  uv run app.py
+  uv run --env-file=.env app.py
   ```
 
-### 注釈
+## 📒参考
 https://gist.github.com/BigRoy/5ac50208969fdc69a722d66874faf8a2#file-usdviewport_qt-py
+
+
+## 💬 補足
+- 利用に関して問題があれば[Issue](https://github.com/testkun08080/kanpo-rss/issues)からご連絡ください。
+
+---
+
+## 📄 ライセンス
+
+MIT License © [testkun08080](https://github.com/testkun08080)
+
+## 😀 貢献
+バグ報告や機能リクエスト、プルリクエストは大歓迎です。問題や提案がある場合は、GitHubのIssueを作成してください。
+その他に、いいなと思ったらスターもらえるとシンプルに喜びます。もしくはコーヒー奢ってもらえるとより喜びます。
