@@ -36,7 +36,7 @@ git clone https://github.com/PixarAnimationStudios/OpenUSD.git
 ## UVを使用してVENVの作成
 ```zsh
 uv init -p 3.11
-uv add PyOpenGL PySide6
+uv add PyOpenGL PySide6 numpy
 uv run OpenUSD/build_scripts/build_usd.py BuildUSD
 ```
 
