@@ -7,7 +7,7 @@ from PySide6.QtCore import QFile, QIODevice
 from pxr import Usd, UsdUtils
 from pxr.Usdviewq.stageView import RenderModes
 
-from embed_usd_viewer import EmmbedUSDWidget
+from embed_usd_widget import EmmbedUSDWidget
 
 
 def get_ui_widget(ui_file_name):
