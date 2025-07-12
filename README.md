@@ -1,12 +1,12 @@
 # 概要
-USD viewerをwidgetに埋め込んで、UIと通してディスプレイの内容をコントロールできるようにしたものです。
-不必要なuiを消しているので、ビューワーとして使いたいだけの場合などに有効かと思います。
-以下のサンプルを参考にして、作成しています（ここで感謝申し上げます！）
-https://gist.github.com/BigRoy/5ac50208969fdc69a722d66874faf8a2#file-usdviewport_qt-py
+USD viewerをwidgetに埋め込んで、UIと通してディスプレイの内容をコントロールできるようにしたものです。  
+不必要なuiを消しているので、ビューワーとして使いたいだけの場合などに有効かと思います。  
+以下のサンプルを参考にして、作成しています（ここで感謝申し上げます！）  
+https://gist.github.com/BigRoy/5ac50208969fdc69a722d66874faf8a2#file-usdviewport_qt-py  
 
 USDのビルドからusdviewerのローカル起動までを行います。
-詳しいドキュメントは以下公式のgithub ページをご覧ください
-[USD-github]https://github.com/PixarAnimationStudios/OpenUSD
+詳しいドキュメントは以下公式のgithub ページをご覧ください。  
+https://github.com/PixarAnimationStudios/OpenUSD
 
 ![サンプルGIF](/docs/sample.gif)
 
